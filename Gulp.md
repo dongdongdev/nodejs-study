@@ -1,5 +1,5 @@
 # gulp目录
-- 前言
+- 前言([返回到项目目录](README.md))
 - [gulp安装](#gulp安装)
 ## 前言
 如果没有nodejs基础知识，请先查看[nodejs安装和初体验](Nodejs.md)
