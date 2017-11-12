@@ -1,4 +1,4 @@
-# nodejs初学者入门教程
+# nodejs初学者入门教程[，点击返回目录](README.md)
 ## windows安装nodejs
 点击[nodejs官方网站](https://nodejs.org)下载(如图)，一般选择LTS版本，这个是长期支持的稳定版本
 ***
@@ -61,3 +61,4 @@ server.listen(9000);
 - 在命令行中输入`cnpm install --save-dev browser-sync`安装项目中使用的浏览器同步工具
 - 在命令行中输入`browser-sync start --server --files "*.css, *.html,*.js"`启动插件
 - 启动完成后，每次保存修改--files参数后面指定的文件，浏览器都会自动刷新
+## node入门基础到此完成，请通过后续课程继续，[点击返回目录](README.md)
