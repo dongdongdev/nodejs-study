@@ -1,8 +1,12 @@
 # gulp目录
-- 前言([返回到项目目录](README.md))
+- 前言
 - [gulp安装](#gulp安装)
+- [gulp管道](#gulp管道)
+- [jshint](#jshint)
 ## 前言
-如果没有nodejs基础知识，请先查看[nodejs安装和初体验](Nodejs.md)
+[gulp官方网站](http://www.gulpjs.com.cn/) | [返回到项目目录](README.md)  
+如果没有nodejs基础知识，请先查看[nodejs安装和初体验](Nodejs.md)  
+
 ## gulp安装
 - 命令行中执行`cnpm install -g gulp`全局安装gulp插件
 - 创建[项目目录](study/gulp/)
@@ -14,3 +18,26 @@
      console.log("gulp你好");  
     }); 
 - 命令行中执行`gulp`测试
+- 解释：gulp.task定义可执行任务,第一个参数是任务的名称（default是默认任务，执行gulp时没有指定任务名称时执行），第二个参数是要执行的function
+
+## gulp管道
+- 在项目目录里面创建[src目录](study/gulp/src)  
+- 创建一些html,js,css文件，js和css放置到不同的目录  
+- 编辑gulpfile.js  
+- 添加内容  
+    gulp.task("pipe",function(){  
+        return gulp.src(["src/\*\*/\*"]).pipe(gulp.dest("dist/"));  
+    });  
+- 命令行中执行`gulp pipe`测试，src中文件都将复制到dist目录中
+- 解释：gulp.src定义源文件,参数是文件名称列表\*\*表示任意层级目录，\*表示任意文件名称，gulp.dest定义目标目录，参数是目录名称，不可以通配符，可以不存在，会自动创建出来，pipe就是管道操作，从pipe前面的位置流向()指定的目标
+
+## gulp-jshint
+- gulp-jshint是js代码检查的gulp插件，[官方网站](https://www.npmjs.com/package/gulp-jshint)
+- 项目目录执行`cnpm install --save-dev jshint gulp-jshint`安装gulp-jshint插件
+- 编辑gulpfile.js  
+- 添加内容  
+    gulp.task("jshint", function() {  
+        return gulp.src(["src/js/**/*.js"]).pipe(jshint()).pipe(jshint.reporter("default"));  
+    });    
+- 命令行中执行`gulp jshint`测试，js目录中的所有js文件都会进行语法检查，如果有语法错误信息（错误的位置和愿意）jshit将会显示在控制台
+- 解释：gulp.src定义要检查的js文件,通过管道交给jshint()对象处理，再通过管道jshint.reporter对象显示错误报告，这里体现了gulp管道优秀的地方，不会生成中间临时处理文件
