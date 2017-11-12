@@ -2,7 +2,7 @@
 - 前言
 - [gulp安装](#gulp安装)
 - [gulp管道](#gulp管道)
-- [jshint](#jshint)
+- [gulp-jshint](#gulp-jshint)
 ## 前言
 [gulp官方网站](http://www.gulpjs.com.cn/) | [返回到项目目录](README.md)  
 如果没有nodejs基础知识，请先查看[nodejs安装和初体验](Nodejs.md)  
