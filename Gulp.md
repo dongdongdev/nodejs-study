@@ -5,6 +5,7 @@
 - [gulp-jshint js代码检查](#gulp-jshint)
 - [gulp-concat 文件合并](#gulp-concat)
 - [gulp-uglify js压缩和混淆](#gulp-uglify)
+- [gulp-plumber gulp异常处理](#gulp-plumber)
 ## 前言
 [gulp官方网站](http://www.gulpjs.com.cn/) | [返回到项目目录](README.md)  
 如果没有nodejs基础知识，请先查看[nodejs安装和初体验](Nodejs.md)  
@@ -80,4 +81,3 @@
      });  
 - 命令行中执行`gulp jsall`测试，js目录中的所有js文件都会先检查语法然后合并并压缩混淆到dest/js/app.min.js中
 - 解释：plumber的作用是在错误发生后不会打断程序的运行，显示错误信息后会继续执行后续动作，plumber.stop()将会恢复原始流程  
- 
