@@ -47,7 +47,7 @@
 
 ## gulp-concat
 - gulp-concat是文件合并的gulp插件，[官方网站](https://www.npmjs.com/package/gulp-concat)
-- 项目目录执行`cnpm install --save-dev jshint gulp-concat`安装gulp-concat插件
+- 项目目录执行`cnpm install --save-dev gulp-concat`安装gulp-concat插件
 - 编辑gulpfile.js  
 - 添加内容  
      const concat = require("gulp-concat");  
@@ -59,7 +59,7 @@
 
 ## gulp-uglify
 - gulp-uglify是js文件压缩混淆的gulp插件，[官方网站](https://www.npmjs.com/package/gulp-uglify)
-- 项目目录执行`cnpm install --save-dev jshint gulp-uglify`安装gulp-uglify
+- 项目目录执行`cnpm install --save-dev gulp-uglify`安装gulp-uglify
 - 编辑gulpfile.js  
 - 添加内容  
      const uglify = require("gulp-uglify");  
@@ -67,4 +67,17 @@
          return gulp.src(["src/js/\*\*/\*.js"]).pipe(concat("app.min.js")).pipe(uglify()).pipe(gulp.dest("dist/js/"));
      });  
 - 命令行中执行`gulp appminjs`测试，js目录中的所有js文件都会合并并压缩混淆到dest/js/app.min.js中
-- 解释：gulp.src定义要合并的js文件，通过管道交给concat合并成app.min.js，自动通过管道交给unlify插件压缩混淆，再通过管道输出到dist/js/目录     
+- 解释：gulp.src定义要合并的js文件，通过管道交给concat合并成app.min.js，自动通过管道交给unlify插件压缩混淆，再通过管道输出到dist/js/目录  
+
+## gulp-plumber
+- gulp-plumber是错误处理的gulp插件，[官方网站](https://www.npmjs.com/package/gulp-plumber)
+- 项目目录执行`cnpm install --save-dev gulp-plumber`安装gulp-plumber
+- 编辑gulpfile.js  
+- 添加内容  
+     const plumber = require("gulp-plumber");  
+     gulp.task("jsall", function() {
+         return gulp.src(["src/js/\*\*/\*.js"]).pipe(plumber()).pipe(jshint()).pipe(jshint.reporter("default")).pipe(concat("app.min.js")).pipe(uglify()).pipe(plumber.stop()).pipe(gulp.dest("dist/js/"));
+     });  
+- 命令行中执行`gulp jsall`测试，js目录中的所有js文件都会先检查语法然后合并并压缩混淆到dest/js/app.min.js中
+- 解释：plumber的作用是在错误发生后不会打断程序的运行，显示错误信息后会继续执行后续动作，plumber.stop()将会恢复原始流程  
+ 
