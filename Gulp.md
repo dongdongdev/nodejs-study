@@ -2,7 +2,9 @@
 - 前言
 - [gulp安装](#gulp安装)
 - [gulp管道](#gulp管道)
-- [gulp-jshint](#gulp-jshint)
+- [gulp-jshint js代码检查](#gulp-jshint)
+- [gulp-concat 文件合并](#gulp-concat)
+- [gulp-uglify js压缩和混淆](#gulp-uglify)
 ## 前言
 [gulp官方网站](http://www.gulpjs.com.cn/) | [返回到项目目录](README.md)  
 如果没有nodejs基础知识，请先查看[nodejs安装和初体验](Nodejs.md)  
@@ -36,8 +38,33 @@
 - 项目目录执行`cnpm install --save-dev jshint gulp-jshint`安装gulp-jshint插件
 - 编辑gulpfile.js  
 - 添加内容  
+    const jshint = require("gulp-jshint");  
     gulp.task("jshint", function() {  
-        return gulp.src(["src/js/**/*.js"]).pipe(jshint()).pipe(jshint.reporter("default"));  
+        return gulp.src(["src/js/\*\*/\*.js"]).pipe(jshint()).pipe(jshint.reporter("default"));  
     });    
 - 命令行中执行`gulp jshint`测试，js目录中的所有js文件都会进行语法检查，如果有语法错误信息（错误的位置和愿意）jshit将会显示在控制台
 - 解释：gulp.src定义要检查的js文件,通过管道交给jshint()对象处理，再通过管道jshint.reporter对象显示错误报告，这里体现了gulp管道优秀的地方，不会生成中间临时处理文件
+
+## gulp-concat
+- gulp-concat是文件合并的gulp插件，[官方网站](https://www.npmjs.com/package/gulp-concat)
+- 项目目录执行`cnpm install --save-dev jshint gulp-concat`安装gulp-concat插件
+- 编辑gulpfile.js  
+- 添加内容  
+     const concat = require("gulp-concat");  
+     gulp.task("appjs", function() {
+         return gulp.src(["src/js/\*\*/\*.js"]).pipe(concat("app.js")).pipe(gulp.dest("dist/js/"));
+     });
+- 命令行中执行`gulp appjs`测试，js目录中的所有js文件都会合并到dest/js/app.js中
+- 解释：gulp.src定义要合并的js文件，通过管道交给concat合并成app.js，再通过管道输出到dist/js/目录
+
+## gulp-uglify
+- gulp-uglify是js文件压缩混淆的gulp插件，[官方网站](https://www.npmjs.com/package/gulp-uglify)
+- 项目目录执行`cnpm install --save-dev jshint gulp-uglify`安装gulp-uglify
+- 编辑gulpfile.js  
+- 添加内容  
+     const uglify = require("gulp-uglify");  
+     gulp.task("appminjs", function() {
+         return gulp.src(["src/js/\*\*/\*.js"]).pipe(concat("app.min.js")).pipe(uglify()).pipe(gulp.dest("dist/js/"));
+     });  
+- 命令行中执行`gulp appminjs`测试，js目录中的所有js文件都会合并并压缩混淆到dest/js/app.min.js中
+- 解释：gulp.src定义要合并的js文件，通过管道交给concat合并成app.min.js，自动通过管道交给unlify插件压缩混淆，再通过管道输出到dist/js/目录     

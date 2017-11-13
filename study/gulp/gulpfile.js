@@ -2,6 +2,10 @@
  const gulp = require("gulp");
  //导入gulp-jshint
  const jshint = require("gulp-jshint");
+ //导入gulp-concat
+ const concat = require("gulp-concat");
+ //导入gulp-uglify
+ const uglify = require("gulp-uglify");
  //默认任务
  gulp.task("default", function() {
      console.log("gulp你好");
@@ -13,4 +17,12 @@
  //js代码检查
  gulp.task("jshint", function() {
      return gulp.src(["src/js/**/*.js"]).pipe(jshint()).pipe(jshint.reporter("default"));
+ });
+ //js文件合并
+ gulp.task("appjs", function() {
+     return gulp.src(["src/js/**/*.js"]).pipe(concat("app.js")).pipe(gulp.dest("dist/js/"));
+ });
+ //js文件压缩混淆
+ gulp.task("appminjs", function() {
+     return gulp.src(["src/js/**/*.js"]).pipe(concat("app.min.js")).pipe(uglify()).pipe(gulp.dest("dist/js/"));
  });
