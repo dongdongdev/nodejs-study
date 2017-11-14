@@ -14,6 +14,8 @@
  const del = require("del");
  //导入gulp-file-sync
  const sync = require("gulp-file-sync");
+ //导入gulp-watch
+ const watch = require("gulp-watch");
  //默认任务
  gulp.task("default", function() {
    console.log("gulp你好");
@@ -51,4 +53,10 @@
  //文件同步
  gulp.task("filesync", function() {
    sync("src/", "build/");
+ });
+ //文件检测
+ gulp.task("watch", function() {
+  return watch("src/js/**/*.js", function() {
+     gulp.start("jsall");
+   });
  });

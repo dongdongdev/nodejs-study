@@ -9,6 +9,7 @@
 - [gulp-clean-css css压缩](#gulp-clean-css)
 - [del 文件删除](#del)
 - [gulp-file-sync 文件同步](#gulp-file-sync)
+- [gulp-watch 文件检查](#gulp-watch)
 ## 前言
 [gulp官方网站](http://www.gulpjs.com.cn/) | [返回到项目目录](README.md)  
 如果没有nodejs基础知识，请先查看[nodejs安装和初体验](Nodejs.md)  
@@ -122,5 +123,19 @@
      });  
 - 命令行中执行`gulp filesync`测试，src目录中的所有文件都会被同步到build目录
 - 解释：gulp-file-sync用于文件同步
+
+## gulp-watch
+- gulp-watch是文件变化检查的gulp插件，[官方网站](https://www.npmjs.com/package/gulp-watch)
+- 项目目录执行`cnpm install --save-dev gulp-watch`安装gulp-watch
+- 编辑gulpfile.js  
+- 添加内容  
+     const watch = require("gulp-watch");  
+     gulp.task("watch", function() {  
+       return watch("src/js/\*\*/\*.js", function() {  
+         gulp.start("jsall");  
+       });  
+     });   
+- 命令行中执行`gulp watch`测试，js文件发生变化后会自动执行jsall任务
+- 解释：gulp-watch用于文件检测
 
 
