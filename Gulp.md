@@ -6,6 +6,9 @@
 - [gulp-concat 文件合并](#gulp-concat)
 - [gulp-uglify js压缩和混淆](#gulp-uglify)
 - [gulp-plumber gulp异常处理](#gulp-plumber)
+- [gulp-clean-css css压缩](#gulp-clean-css)
+- [del 文件删除](#del)
+- [gulp-file-sync 文件同步](#gulp-file-sync)
 ## 前言
 [gulp官方网站](http://www.gulpjs.com.cn/) | [返回到项目目录](README.md)  
 如果没有nodejs基础知识，请先查看[nodejs安装和初体验](Nodejs.md)  
@@ -81,3 +84,43 @@
      });  
 - 命令行中执行`gulp jsall`测试，js目录中的所有js文件都会先检查语法然后合并并压缩混淆到dest/js/app.min.js中
 - 解释：plumber的作用是在错误发生后不会打断程序的运行，显示错误信息后会继续执行后续动作，plumber.stop()将会恢复原始流程  
+
+## gulp-clean-css
+- gulp-clean-css是css文件压缩的gulp插件，[官方网站](https://www.npmjs.com/package/gulp-clean-css)
+- 项目目录执行`cnpm install --save-dev gulp-clean-css`安装gulp-clean-css
+- 编辑gulpfile.js  
+- 添加内容  
+     const mincss = require("gulp-clean-css");  
+     gulp.task("appmincss", function() {
+         return gulp.src(["src/css/\*\*/\*.css"]).pipe(concat("app.min.css")).pipe(mincss()).pipe(gulp.dest("dist/css/"));
+     });  
+- 命令行中执行`gulp appmincss`测试，css目录中的所有css文件都会合并并压缩到dest/js/app.min.css中
+- 解释：gulp-clean-css压缩css文件
+
+## del
+- del是删除文件的插件，[官方网站](https://www.npmjs.com/package/del)
+- 项目目录执行`cnpm install --save-dev del`安装del
+- 编辑gulpfile.js  
+- 添加内容  
+     const del = require("del");  
+     gulp.task("clear", function() {  
+        del.sync([ "dist/\*\*/\*" ], {  
+            force : true  
+        });  
+     });  
+- 命令行中执行`gulp clear`测试，dist目录中的所有文件都会被删除
+- 解释：del用于文件删除
+
+## gulp-file-sync
+- gulp-file-sync是文件同步的gulp插件，[官方网站](https://www.npmjs.com/package/gulp-file-sync)
+- 项目目录执行`cnpm install --save-dev gulp-file-sync`安装gulp-file-sync
+- 编辑gulpfile.js  
+- 添加内容  
+     const sync = require("gulp-file-sync");  
+     gulp.task("filesync", function() {  
+        sync("src/", "build/");  
+     });  
+- 命令行中执行`gulp filesync`测试，src目录中的所有文件都会被同步到build目录
+- 解释：gulp-file-sync用于文件同步
+
+

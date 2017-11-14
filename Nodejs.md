@@ -18,7 +18,7 @@
 ## 第一个nodejs程序
 - 在任意目录创建一个[hello.js](study/hello.js)的javascript文件
 - 编辑内容`console.log("nodejs你好");`，和标准的js一样的语法
-- 在上文中打开的命令行中输入`cd hello.js所在的目录 `，切换到js文件所在目录，执行`node hello.js`
+- 在上文中打开的命令行中输入`cd hello.js所在的目录`，切换到js文件所在目录，执行`node hello.js`
 - 第一个node程序就成功的完成
 ***
 ## 使用nodejs搭建http服务器
