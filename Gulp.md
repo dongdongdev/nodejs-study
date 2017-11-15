@@ -10,6 +10,7 @@
 - [del 文件删除](#del)
 - [gulp-file-sync 文件同步](#gulp-file-sync)
 - [gulp-watch 文件检查](#gulp-watch)
+- [简单的gulp整合演示](study/gulp-total/)
 ## 前言
 [gulp官方网站](http://www.gulpjs.com.cn/) | [返回到项目目录](README.md)  
 如果没有nodejs基础知识，请先查看[nodejs安装和初体验](Nodejs.md)  
@@ -72,7 +73,7 @@
          return gulp.src(["src/js/\*\*/\*.js"]).pipe(concat("app.min.js")).pipe(uglify()).pipe(gulp.dest("dist/js/"));
      });  
 - 命令行中执行`gulp appminjs`测试，js目录中的所有js文件都会合并并压缩混淆到dest/js/app.min.js中
-- 解释：gulp.src定义要合并的js文件，通过管道交给concat合并成app.min.js，自动通过管道交给unlify插件压缩混淆，再通过管道输出到dist/js/目录  
+- 解释：gulp.src定义要合并的js文件，通过管道交给concat合并成app.min.js，自动通过管道交给uglify插件压缩混淆，再通过管道输出到dist/js/目录  
 
 ## gulp-plumber
 - gulp-plumber是错误处理的gulp插件，[官方网站](https://www.npmjs.com/package/gulp-plumber)
@@ -137,5 +138,3 @@
      });   
 - 命令行中执行`gulp watch`测试，js文件发生变化后会自动执行jsall任务
 - 解释：gulp-watch用于文件检测
-
-
