@@ -94,7 +94,8 @@ create table TbVipCardRecord
 	rtstatus int foreign key references TbStatus(sid) not null,
 	/*交易模式,1为增加，-1为减少*/
 	rmode int check(rmode in(-1,1)) not null,
-	
+	/*交易金额*/
+	ramount decimal(10,2) check(ramount>0) not null,
 	/*交易说明*/
 	rinfo nvarchar(500) not null,
 	/*交易时间*/

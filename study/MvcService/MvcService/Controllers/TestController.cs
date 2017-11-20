@@ -10,6 +10,20 @@ namespace MvcService.Controllers
 {
     public class TestController : Controller
     {
+        public ActionResult Other(TestModel m)
+        {
+            try
+            {
+                m.Success = true;
+                m.ServerMessage = "other应答:" + m.ServerMessage;
+            }
+            catch (Exception ex)
+            {
+                m.Fail(ex);
+            }
+            return Json(m);
+        }
+
         public ActionResult Index(TestModel m)
         {
             try
@@ -23,7 +37,6 @@ namespace MvcService.Controllers
                 m.Fail(ex);
             }
             return Json(m, JsonRequestBehavior.AllowGet);
-
         }
     }
 }

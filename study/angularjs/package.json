@@ -1,5 +1,16 @@
 {
   "devDependencies": {
-    "angular": "^1.6.6"
+    "angular": "^1.6.6",
+    "angular-route": "^1.6.6",
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^3.9.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-file-sync": "^1.0.8",
+    "gulp-jshint": "^2.0.4",
+    "gulp-plumber": "^1.1.0",
+    "gulp-uglify": "^3.0.0",
+    "gulp-watch": "^4.3.11",
+    "jshint": "^2.9.5"
   }
 }
