@@ -2,7 +2,12 @@
   var controllers = angular.module("controllers");
 
   controllers.controller("WelcomeCtrl", ["$scope", "$log", "$cookies", "$window", function($scope, $log, $cookies, $window) {
-    $log.info("WelcomeCtrl初始化。。。");
+    $log.debug("WelcomeCtrl init...");
+
+    // 处理scope销毁
+    $scope.$on("$destroy", function() {
+      $log.debug("WelcomeCtrl destroy...");
+    });
 
     $scope.action = "";
     $scope.cookieValue = $cookies.get("mycookie");
@@ -17,15 +22,15 @@
       $scope.action = "移除cookie：" + $scope.cookieValue;
     };
 
-    $scope.localValue = $window.localStorage["mylocal"];
+    $scope.localValue = $window.localStorage.mylocal;
 
     $scope.saveLocal = function() {
-      $window.localStorage["mylocal"] = $scope.localValue;
+      $window.localStorage.mylocal = $scope.localValue;
       $scope.action = "保存本地储存：" + $scope.localValue;
     };
 
     $scope.removeLocal = function() {
-      delete $window.localStorage["mylocal"];
+      delete $window.localStorage.mylocal;
       $scope.action = "移除本地储存：" + $scope.cookieValue;
     };
 
