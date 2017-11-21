@@ -2,6 +2,7 @@
   "devDependencies": {
     "angular": "^1.6.6",
     "angular-route": "^1.6.6",
+    "browser-sync": "^2.18.13",
     "del": "^3.0.0",
     "gulp": "^3.9.1",
     "gulp-clean-css": "^3.9.0",
