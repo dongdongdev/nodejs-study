@@ -31,17 +31,18 @@
     <div id="divVue">
       <h1 style="text-align: center;">{{welcome}}</h1>
       <div style="text-align: center;">
-        <lable>请选择服务器：
+        <label>请选择服务器：
         <select v-model="selected">
           <option v-for="s in servers" v-bind:value="s">{{s}}</option>
         </select>
-        </lable>
-        <lable>请输入请求的路径：
+        </label>
+        <label>请输入请求的路径：
         <input v-model="path" type="text">
-        </lable>
-        <lable>请输入发送的json：
-        <input v-model="sendinfo" type="text">
-        </lable>
+        </label>
+		<hr />
+        <label>请输入发送的json：
+        <textarea v-model="sendinfo" rows="3" cols="80"></textarea>
+        </label>
         <button type="button" v-on:click="send">发送</button>
       </div>
       <hr />
