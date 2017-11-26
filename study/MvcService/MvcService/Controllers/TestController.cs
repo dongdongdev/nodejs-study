@@ -40,7 +40,7 @@ namespace MvcService.Controllers
             try
             {
                 m.Success = true;
-                m.ServerMessage = "Echo:" + m.Echo;
+                m.ServerMessage = "<h1 class='text-center' onclick='alert(123)'>Echo:" + m.Echo + "</h1>";
                 m.Datas.Add("VipLevels", VipLevelDAO.QueryAll());
             }
             catch (Exception ex)

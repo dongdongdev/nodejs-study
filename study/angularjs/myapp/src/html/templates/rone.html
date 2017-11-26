@@ -4,6 +4,10 @@
     {{error}}
   </div>
   <div ng-if="status==2">
+    <div class="jumbotron">
+      <span ng-bind="data.ServerMessage"></span>
+      <span ng-bind-html="data.ServerMessage"></span>
+    </div>
     <table class="table table-bordered table-hover">
       <thead class="bg-primary">
         <tr>

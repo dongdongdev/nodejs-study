@@ -12,7 +12,7 @@
     $scope.status = 1; //加载中
 
     var senddata = {
-      "Echo": "dfdf",
+      "Echo": "你好",
       "PageInfo": {
         "PageNumber": 1
       },
