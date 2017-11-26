@@ -3,6 +3,12 @@
 
   controllers.controller("ROneCtrl", ["$scope", "$log", "$http", function($scope, $log, $http) {
     $log.info("ROneCtrl init...");
+
+    // 处理scope销毁
+    $scope.$on("$destroy", function() {
+      $log.debug("ROneCtrl destroy...");
+    });
+
     var senddata = {
       "Echo": "dfdf",
       "PageInfo": {
@@ -22,10 +28,6 @@
       $log.error("http 错误:", data);
     });
 
-    // 处理scope销毁
-    $scope.$on("$destroy", function() {
-      $log.debug("ROneCtrl destroy...");
-    });
 
 
   }]);

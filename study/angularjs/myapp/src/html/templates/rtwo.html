@@ -1,1 +1,15 @@
-<div ng-controller="RTwoCtrl">第二个路由界面</div>
+<div ng-controller="RTwoCtrl">
+  <div ng-include="'templates/rtwo/head.html'"></div>
+  <hr>
+  <div class="bg-info">
+    <ul class="nav nav-tabs">
+      <li role="presentation" ng-class="{true:'active'}[nowpage=='inc01']">
+        <a href="javascript:void(0);" ng-click="changePage('inc01')">页签一</a>
+      </li>
+      <li role="presentation" ng-class="{true:'active'}[nowpage=='inc02']">
+        <a href="javascript:void(0);" ng-click="changePage('inc02')">页签二</a>
+      </li>
+    </ul>
+    <div ng-include="page"></div>
+  </div>
+</div>
