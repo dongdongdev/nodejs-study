@@ -80,6 +80,8 @@ gulp.task("html", function() {
 gulp.task("js", function() {
   var jsfiles = [];
   jsfiles.push(appJsDir + "config.js");
+  jsfiles.push(appJsDir + "services/**/*.js");
+  jsfiles.push(appJsDir + "directives/**/*.js");
   jsfiles.push(appJsDir + "controllers/**/*.js");
   jsfiles.push(appJsDir + "startup.js");
 
@@ -124,7 +126,7 @@ gulp.task("watch", function() {
     gulp.start("js");
   });
 
-  watch([appCssDir + "**/*.js"], function() {
+  watch([appCssDir + "**/*.css"], function() {
     gulp.start("css");
   });
 

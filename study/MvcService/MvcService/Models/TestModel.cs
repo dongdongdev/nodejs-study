@@ -11,10 +11,12 @@ namespace MvcService.Models
         public String Echo { get; set; }
         public Page PageInfo { get; set; }
         public IList<String> Infos { get; set; }
+        public DateTime NowTime { get; set; }
 
         public TestModel()
         {
             Infos = new List<string>();
+            NowTime = DateTime.Now;
         }
     }
 }

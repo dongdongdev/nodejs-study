@@ -1,3 +1,27 @@
-<div ng-controller="ROneCtrl" class="bg-danger">
-  json请求：{{data}}
+<div ng-controller="ROneCtrl">
+  <div ng-if="status==1" class="jumbotron">数据加载中</div>
+  <div ng-if="status==3" class="jumbotron text-danger">
+    {{error}}
+  </div>
+  <div ng-if="status==2">
+    <table class="table table-bordered table-hover">
+      <thead class="bg-primary">
+        <tr>
+          <th>编号</th>
+          <th>名称</th>
+          <th>充值金额</th>
+          <th>折扣百分比</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr ng-repeat="vip in data.Datas.VipLevels">
+            <td>{{vip.Vlid}}</td>
+            <td>{{vip.Lname}}</td>
+            <td>{{vip.Amount}}</td>
+            <td>{{vip.Apercent}}</td>
+          </tr>
+      </tbody>
+    </table>
+  </div>
+  
 </div>
