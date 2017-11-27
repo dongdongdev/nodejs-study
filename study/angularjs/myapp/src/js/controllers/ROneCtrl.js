@@ -1,7 +1,7 @@
 (function() {
   var controllers = angular.module("controllers");
 
-  controllers.controller("ROneCtrl", ["$scope", "$log", "$http", function($scope, $log, $http) {
+  controllers.controller("ROneCtrl", ["$scope", "$log", "$http", "MyUtilService", function($scope, $log, $http, MyUtilService) {
     $log.info("ROneCtrl init...");
 
     // 处理scope销毁
@@ -27,6 +27,7 @@
       $log.debug("http 应答数据:", data.data);
       $scope.status = 2; //加载成功
       $scope.data = data.data;
+      $scope.nowdate = MyUtilService.formatDate(data.data.NowTime.replace(/\D/g, ""));
     }, function(data, status) {
       $scope.status = 3; //加载失败
       $log.error("http 错误:", data);
