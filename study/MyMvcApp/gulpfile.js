@@ -140,7 +140,6 @@ gulp.task("debug", ["clear", "jslib", "csslib", "fonts", "images", "html", "html
   console.log("打包任务完成");
 });
 
-
 /*开发watch任务*/
 gulp.task("watch", function() {
   //检查dist目录
@@ -152,8 +151,8 @@ gulp.task("watch", function() {
   gulp.watch([distDir + "**/*"]).on("change", browserSync.reload);
 
   watch([appJsDir + "**/*.js"], function() {
+    //gulp.start("js");
     gulp.start("js-debug");
-    gulp.start("js");
   });
 
   watch([appCssDir + "**/*.css"], function() {
@@ -161,7 +160,7 @@ gulp.task("watch", function() {
   });
 
   watch([appHtmlDir + "**/*.html"], function() {
-    gulp.start("html");
+    //gulp.start("html");
     gulp.start("html-debug");
   });
 
