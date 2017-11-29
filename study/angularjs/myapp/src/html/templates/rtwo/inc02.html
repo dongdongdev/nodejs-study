@@ -1,1 +1,28 @@
-<div class="jumbotron">inc02.html</div>
+<div class="jumbotron" ng-controller="RTwoInc021">
+  <div>父级</div>
+  <div>message1:{{message1}}</div>
+  <div>message2:{{message2}}</div>
+  <div>message3:{{message3}}</div>
+  <div ng-controller="RTwoInc022">
+    <input type="text" ng-model="message">
+    <span class="btn btn-primary" ng-click="send()">发送</span>
+    <hr/>
+    <div ng-controller="RTwoInc021">
+      <div>子级</div>
+      <div>message1:{{message1}}</div>
+      <div>message2:{{message2}}</div>
+      <div>message3:{{message3}}</div>
+    </div>
+  </div>
+</div>
+<hr >
+<div ng-controller="RTwoInc022">
+  <input type="text" ng-model="message">
+  <span class="btn btn-primary" ng-click="send()">发送</span>
+</div>
+<div ng-controller="RTwoInc021">
+  <div>同级</div>
+  <div>message1:{{message1}}</div>
+  <div>message2:{{message2}}</div>
+  <div>message3:{{message3}}</div>
+</div>
