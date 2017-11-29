@@ -136,7 +136,7 @@ gulp.task("default", ["clear", "jslib", "csslib", "fonts", "images", "html", "js
 });
 
 /*带debug的打包任务*/
-gulp.task("default", ["clear", "jslib", "csslib", "fonts", "images", "html", "html-debug", "js", "js-debug", "css"], function() {
+gulp.task("debug", ["clear", "jslib", "csslib", "fonts", "images", "html", "html-debug", "js", "js-debug", "css"], function() {
   console.log("打包任务完成");
 });
 

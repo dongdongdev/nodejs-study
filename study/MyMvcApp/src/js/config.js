@@ -54,6 +54,35 @@
       return formdata;
     }];
 
+    /* 请求错误统一跳转到错误页面 */
+    $httpProvider.interceptors.push(["$q", "$log", "$location", function($q, $log, $location) {
+      return {
+        "responseError": function(rejection) {
+          $log.debug("应答发生错误：", rejection);
+          if (rejection.config.url.substr(0, 9) == "templates") {
+            $log.debug("模板页不存在==>", rejection.config.url);
+            $location.path("/"); // 找不到模板转到首页，也可以跳转到统一的404错误页
+          }
+          return $q.reject(rejection);
+        }
+      };
+    }]);
+
+  }]);
+
+  // 配置路由
+  app.config(["$routeProvider", function($routeProvider) {
+    $routeProvider.when("", {
+      redirectTo: "/route/page/index"
+    }).when("/", {
+      redirectTo: "/route/page/index"
+    }).when("/index", {
+      redirectTo: "/route/page/index"
+    }).when("/route/:path*", {
+      templateUrl: "templates/route.html"
+    }).otherwise({
+      redirectTo: "/route/page/index"
+    });
   }]);
 
 })(window);
