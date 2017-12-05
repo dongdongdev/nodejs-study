@@ -14,5 +14,8 @@ namespace MvcService.Dal.Entity
         public int Cstatus { get; set; }
         public DateTime Created { get; set; }
         public Decimal Balance { get; set; }
+        public int Level { get; set; }
+        public string Lname { get; set; }
+
     }
 }

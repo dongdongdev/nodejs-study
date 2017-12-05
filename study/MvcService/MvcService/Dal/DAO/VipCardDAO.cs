@@ -74,6 +74,49 @@ namespace MvcService.Dal.DAO
 
         }
 
+        public const string QUERY = @"select a.*,l.lname from
+ (
+ select vc.vcid,vc.cardno,vc.phone,vc.username,vc.cstatus,s.sname
+ ,(
+	select SUM(vcr.rmode*vcr.ramount) from TbVipCardRecord vcr
+	where vcr.vcid=vc.vcid
+  ) 'balance',
+  (
+	select top 1 vlid from TbVipLevel
+	where amount<=
+	(
+		select sum(vcr.ramount) from TbVipCardRecord vcr
+		where vcr.vcid=vc.vcid and vcr.rstatus=1003
+	) 
+	order by amount desc
+ ) 'level'
+ from TbVipCard vc
+ inner join TbStatus s on vc.cstatus=s.sid
+ ) a 
+ inner join TbVipLevel l on a.level=l.vlid";
+
+        public static IList<TbVipCard> Query()
+        {
+            SqlConnection conn = DBConn.GetConn();
+            SqlTransaction tran = conn.BeginTransaction();
+            try
+            {
+                IList<TbVipCard> list = DBHelper.QueryRows(
+new TbVipCard(), tran, QUERY);
+                tran.Commit();
+                return list;
+            }
+            catch (Exception)
+            {
+                tran.Rollback();
+                throw;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+        }
 
     }
 }
